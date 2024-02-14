@@ -33,3 +33,11 @@ html_theme = 'sphinx_rtd_theme'
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
+
+
+# Import the package to document:
+import wonderfulpackage
+
+# Automatically generate documentation pages
+from gendocs import Generator
+Generator().DocumentPackages(wonderfulpackage)
