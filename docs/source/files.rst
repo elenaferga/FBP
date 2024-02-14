@@ -174,11 +174,92 @@ Calculating Likelihood:
 
 run.py
 -------
-Serves as the main script to execute the project, orchestrating the overall workflow.
+
+
+The `run.py` script provides a command-line interface to perform various tasks related to the cosmological simulations, formalism calibration, and parameter constraints. The script allows users to choose from different options:
+
+1. Calculate Nvoids or VPF
+..........................
+
+- **Option 1:** Calculate Nvoids
+    - Calculates the Void Probability Function (VPF) using the direct formalism.
+    - Users provide cosmological parameters, simulation details, and output file information.
+
+- **Option 2:** Calculate VPF
+    - Calculates the Volume Probability Function (VPF) using the direct formalism.
+    - Users provide cosmological parameters, simulation details, and output file information.
+
+2. Calibrate Formalism
+.......................
+
+- **Option 3:** Calibrate Formalism
+    - Calibration of the formalism based on high-resolution simulations (Uchuu halo simulation box, Uchuu-SDSS galaxy simulation box, or Uchuu-SDSS light-cone).
+    - Users choose the type of simulation and space (real or redshift).
+
+3. Constrain Sigma8 and Gamma
+.............................
+
+- **Option 4:** Constrain Sigma8 and Gamma
+    - Constrain cosmological parameters (Sigma8 and Gamma) using likelihood calculations.
+    - Users choose the simulation sample to constrain and specify whether it's in real or redshift space.
+
+Notes
+.....
+- Ensure necessary dependencies are installed, including `numpy`, `subprocess`, and other project-specific modules.
+- Follow the provided prompts for input parameters and options.
+- Option 4 requires prior calibration (Option 3) for accurate parameter constraints.
+
+
 
 simulations.py
 ----------------
-Manages the simulations carried out as part of the project.
+This module contains classes that define different cosmological simulations for both halo and galaxy datasets. The simulations include various parameters such as mass (M), number density (n), redshift (z), and cosmological parameters (omega_lambda, omega_m, sigma8, gamma).
 
-Feel free to refer to the respective files for detailed information on their functions and usage.
+`HaloSimulations` Class
+........................
+
+- The `HaloSimulations` class represents simulations of dark matter haloes.
+- **Attributes:**
+    - `name`: Name of the simulation (e.g., 'Uchuu', 'P18', 'Low', 'VeryLow').
+    - `space`: Space in which the simulation is conducted ('real' or 'redshift').
+    - `M`: Mass parameter for the simulation.
+    - `n`: Number density parameter for the simulation.
+    - `z`: Redshift parameter for the simulation.
+    - `sim`: Array representing the simulation results for different radial bins.
+    - Cosmological parameters (omega_lambda, omega_m, sigma8, gamma) specific to each simulation.
+
+`GalaxySimulations` Class
+.........................
+
+- The `GalaxySimulations` class represents simulations of galaxies.
+- **Attributes:**
+    - `name`: Name of the simulation (e.g., 'Uchuu').
+    - `space`: Space in which the simulation is conducted ('real' or 'redshift').
+    - `M`: Mass parameter for the simulation.
+    - `n`: Number density parameter for the simulation.
+    - `z`: Redshift parameter for the simulation.
+    - `sim`: Array representing the simulation results for different radial bins.
+    - Cosmological parameters (omega_lambda, omega_m, sigma8, gamma) specific to each simulation.
+
+Example Usage:
+.............
+
+::
+  # Example usage of HaloSimulationsuchuu_halo_real = HaloSimulations('Uchuu', 'real')
+  print(f"Simulation Name: {uchuu_halo_real.name}")
+  print(f"Simulation Space: {uchuu_halo_real.space}")
+  print(f"Number Density: {uchuu_halo_real.n}")
+  print(f"Simulation Results: {uchuu_halo_real.sim}")
+
+::
+  # Example usage of GalaxySimulations
+  uchuu_galaxy_real = GalaxySimulations('Uchuu', 'real')
+  print(f"Simulation Name: {uchuu_galaxy_real.name}")
+  print(f"Simulation Space: {uchuu_galaxy_real.space}")
+  print(f"Number Density: {uchuu_galaxy_real.n}")
+  print(f"Simulation Results: {uchuu_galaxy_real.sim}")
+
+
+
+
 
