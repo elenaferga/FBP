@@ -14,10 +14,11 @@ Contents
 --------
 
 .. toctree::
+   :maxdepth: 1
 
-   installation
-   usage
-   citations
+   installation.rst
+   usage.rst
+   citations.rst
    
 
 
