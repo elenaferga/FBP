@@ -4,7 +4,7 @@ FBP-formalism
 1. Overview
 ------------
 
-(nombre) is a Python-based project designed for efficient cosmological computations. The project predicts the Void Probability Function (VPF, i.e, the probability that a randomly placed sphere with radius $r$ is empty of objects -- galaxies or dark matter) and the number density of voids larger than $r$, $\bar{n}_{v}(r)$. Additionally, given $\bar{n}_{v}(r)$, the code is able to constrain the values of sigma8 and gamma using the Maximum Likelihood test.
+FBP is a Python-based project designed for efficient cosmological computations. The project predicts the Void Probability Function (VPF, i.e, the probability that a randomly placed sphere with radius $r$ is empty of objects -- galaxies or dark matter) and the number density of voids larger than $r$, $\bar{n}_{v}(r)$. Additionally, given $\bar{n}_{v}(r)$, the code is able to constrain the values of sigma8 and gamma using the Maximum Likelihood test.
 
 2. Installation
 ---------------
