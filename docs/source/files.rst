@@ -167,8 +167,9 @@ Calculating Likelihood:
 .....................
 
 ::
-likelihood_calculator = Likelihood('calibrated_formalism.txt', simulation_values)
-likelihood_calculator.calculate_likelihood()
+
+  likelihood_calculator = Likelihood('calibrated_formalism.txt', simulation_values)
+  likelihood_calculator.calculate_likelihood()
 
 
 run.py
