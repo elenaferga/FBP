@@ -33,7 +33,7 @@ Example Command
 
 ::
 
-  python calibration_data.py --omega_lambda 0.7 --omega_m 0.3 --sigma8 0.8 --gamma 0.2 --M 7.5 --n 3e-3 --z 0.092
+  python3 calibration_data.py --omega_lambda 0.7 --omega_m 0.3 --sigma8 0.8 --gamma 0.2 --M 7.5 --n 3e-3 --z 0.092
 
 
 calibration_mocks.py
@@ -65,7 +65,7 @@ Example Command
 
 ::
 
-  python calibration_mocks.py --omega_lambda 0.7 --omega_m 0.3 --sigma8 0.8 --gamma 0.2 --M 7.5 --n 3e-3 --z 0.092 --space real --particles Haloes
+  python3 calibration_mocks.py --omega_lambda 0.7 --omega_m 0.3 --sigma8 0.8 --gamma 0.2 --M 7.5 --n 3e-3 --z 0.092 --space real --particles Haloes
 
 constraints.py
 ---------------
@@ -89,23 +89,87 @@ Example Command
 
 ::
 
-  python constraints.py --sim [0.7, 0.3, 0.8, 0.2, 1e14, 0.95, 0.5, True]
-
-
+  python3 constraints.py --sim [21.9375, 12.125, 6.3125, 2.78125, 0.90625, 0.0625]
 
 
 
 direct_formalism.py
 ---------------------
-Implements the direct formalism aspects crucial to the project.
+
+The `direct_formalism.py` script facilitates the calculation of the Void Probability Function (VPF) and the number of voids (nvoids) for a given cosmological model. It offers the flexibility to choose between the two functions and allows customization of various cosmological parameters and analysis settings.
+
+Usage
+.....
+
+To perform the calculations, users can run the script `direct_formalism.py` with the following command-line arguments:
+
+- `function`: Choose between "nvoids" or "P0" to calculate the respective function.
+- `--omega_lambda`: Value for omega_lambda.
+- `--omega_m`: Value for omega_m.
+- `--sigma8`: Value for sigma8.
+- `--gamma`: Value for gamma.
+- `--M`: Value for M.
+- `--n`: Value for n.
+- `--z`: Value for z (redshift).
+- `--space`: Real or Redshift space.
+- `--rmin`: Minimum value for r.
+- `--rmax`: Maximum value for r.
+- `--deltar`: Spacing between r values.
+- `--output_file`: Name of the file to save the table.
+
+Functionality
+.............
+
+The script computes the chosen function, generates a table with results, and saves the table to a file if specified. Additionally, it produces a plot illustrating the calculated function.
+
+Example Command
+...............
+
+::
+  python3 direct_formalism.py nvoids --omega_lambda 0.7 --omega_m 0.3 --sigma8 0.8 --gamma 0.2 --M 7.5 --n 3e-3 --z 0.092 --space real --rmin 1 --rmax 10 --deltar 0.1 --output_file nvoids_results.txt
+
+
 
 Functions.py
 --------------
-Houses various functions utilized across the formalism for efficient code organization.
+
+
+
 
 likelihood.py
 ----------------
-Handles the calculation of likelihood values for the project.
+
+
+The `likelihood.py` module contains classes for handling the calibration of the formalism (`CalibratedFormalism`) and calculating likelihoods based on simulation data (`Likelihood`). This module is a key component for assessing the statistical agreement between the calibrated formalism and the simulated data.
+
+`CalibratedFormalism` Class
+...........................
+
+The `CalibratedFormalism` class initializes a calibrated cosmological model using specified parameters. It calculates function values, including Void Probability Function (VPF), and saves the results to a file. The class also includes methods for calculating `ap` and `a` values necessary for likelihood computations.
+
+`Likelihood` Class
+..................
+
+The `Likelihood` class reads a calibrated formalism file and simulation values, then calculates the likelihood for different combinations of sigma8 and gamma parameters. It produces a likelihood table, saves it to a file, and generates a contour plot illustrating the confidence levels.
+
+Example Usage
+.............
+
+Calibrating Formalism:
+.....................
+
+::
+
+  calibrated_model = CalibratedFormalism(0.7, 0.3, 0.8, 0.2, 1e14, 0.95, 0.5, True)
+  calibrated_model.calculate_function_vals(r_values, sigma_values, gamma_values, uchuu_data)
+
+Calculating Likelihood:
+.....................
+
+::
+likelihood_calculator = Likelihood('calibrated_formalism.txt', simulation_values)
+likelihood_calculator.calculate_likelihood()
+
 
 run.py
 -------
