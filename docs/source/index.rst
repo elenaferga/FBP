@@ -17,9 +17,7 @@ Contents
    :maxdepth: 1
 
    installation.rst
-   usage.rst
-   citations.rst
-   
+
 
 
 Lumache has its documentation hosted on Read the Docs.
