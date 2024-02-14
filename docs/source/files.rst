@@ -245,6 +245,7 @@ Example Usage:
 .............
 
 ::
+
   # Example usage of HaloSimulationsuchuu_halo_real = HaloSimulations('Uchuu', 'real')
   print(f"Simulation Name: {uchuu_halo_real.name}")
   print(f"Simulation Space: {uchuu_halo_real.space}")
@@ -252,6 +253,7 @@ Example Usage:
   print(f"Simulation Results: {uchuu_halo_real.sim}")
 
 ::
+
   # Example usage of GalaxySimulations
   uchuu_galaxy_real = GalaxySimulations('Uchuu', 'real')
   print(f"Simulation Name: {uchuu_galaxy_real.name}")
