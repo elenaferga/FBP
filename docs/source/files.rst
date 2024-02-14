@@ -7,7 +7,8 @@ This folder contains several files that play essential roles in the formalism of
 
 calibration_data.py
 --------------------
-Contains functions and classes related to calibration data used in the project.
+Contains a perform_calibration(args) function in order to calibrate redshift survey (SDSS) using CalibratedFormalism class from likelihood.py file. In order to run this code, the following line has to be written in shell::
+  python3 calibration_data.py --omega_lambda {omega_lambda} --omega_m {omega_m} --sigma8 {sigma8} --gamma {gamma} --M {M} --n {n} --z {z} --space {space}
 
 calibration_mocks.py
 ---------------------
