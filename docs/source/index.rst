@@ -17,4 +17,5 @@ Contents
 
    installation.rst
    usage.rst
+   files.rst
    citations.rst
