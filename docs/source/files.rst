@@ -33,18 +33,67 @@ Example Command
 
 ::
 
-  python calibration_data.py --omega_lambda 0.7 --omega_m 0.3 --sigma8 0.8 --gamma 0.2 --M 1e14 --n 0.95 --z 0.5
+  python calibration_data.py --omega_lambda 0.7 --omega_m 0.3 --sigma8 0.8 --gamma 0.2 --M 7.5 --n 3e-3 --z 0.092
 
 
 calibration_mocks.py
 ---------------------
-Contains a perform_calibration(args) function in order to calibrate mocks (dark matter particles, dark matter haloes or galaxies) using CalibratedFormalism class from likelihood.py file. In order to run this code, the following line has to be written in shell::
+The `calibration_mocks.py` script plays a vital role in calibrating mocks, specifically targeting Uchuu dark matter haloes or Uchuu-SDSS galaxies within the project's formalism. It utilizes command-line arguments to customize the calibration process based on various cosmological parameters and simulation details.
 
-  python3 calibration_mocks.py --omega_lambda {omega_lambda} --omega_m {omega_m} --sigma8 {sigma8} --gamma {gamma} --M {M} --n {n} --z {z} --space {space} --particles {particles}
+Usage
+.....
+
+To initiate the calibration of mocks, users can run the script `calibration_mocks.py` with the following optional command-line arguments:
+
+- `--omega_lambda`: Value for omega_lambda
+- `--omega_m`: Value for omega_m
+- `--sigma8`: Value for sigma8
+- `--gamma`: Value for gamma
+- `--M`: Value for M
+- `--n`: Value for n
+- `--z`: Value for z (redshift)
+- `--space`: Real or Redshift space
+- `--particles`: Haloes or Galaxies
+
+Calibration Process
+...................
+
+The script fetches simulation data based on user-specified space (real or redshift) and particle type (haloes or galaxies) from the Uchuu dataset. It then utilizes the `CalibratedFormalism` class to perform the calibration, prompting the user to input minimum and maximum values along with step sizes for sigma8 and gamma.
+
+Example Command
+...............
+
+::
+
+  python calibration_mocks.py --omega_lambda 0.7 --omega_m 0.3 --sigma8 0.8 --gamma 0.2 --M 7.5 --n 3e-3 --z 0.092 --space real --particles Haloes
 
 constraints.py
 ---------------
-Defines and manages constraints applied within the formalism of the project.
+
+The `constraints.py` script is designed to compute constraints on the parameters sigma8 and gamma based on the likelihood calculations using calibrated formalism. It serves as a crucial step in the project, providing insights into the statistical likelihood of parameter values given the observational data.
+
+Usage
+.....
+
+To execute the constraints calculation, users can run the script `constraints.py` with the following optional command-line argument:
+
+- `--sim`: An array representing simulation data for the likelihood calculation.
+
+Constraints Calculation
+.......................
+
+The script checks for the existence of the file `calibrated_formalism.txt` in the `/formalism` folder. If the file is found, it utilizes the `Likelihood` class from the `likelihood` module to calculate the log-likelihood based on the provided simulation data array. The results offer valuable constraints on the sigma8 and gamma parameters.
+
+Example Command
+...............
+
+::
+
+  python constraints.py --sim [0.7, 0.3, 0.8, 0.2, 1e14, 0.95, 0.5, True]
+
+
+
+
 
 direct_formalism.py
 ---------------------
