@@ -1,4 +1,5 @@
-## Citations
+Citations
+=========
 
 Please, if you use this code in your work, cite 
 - mi paper :)
