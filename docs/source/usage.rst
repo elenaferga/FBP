@@ -1,4 +1,4 @@
-Usage
+Quick Usage
 =====
 
 After installation, you can execute the code using the provided bash script::
