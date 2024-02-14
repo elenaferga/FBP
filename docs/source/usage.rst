@@ -1,7 +1,7 @@
 Quick Usage
 ==========
 
-After installation, you can execute the code using the provided bash script::
+After installation, you can execute the code using the provided bash script in the main folder::
 
     ./run.sh
 
